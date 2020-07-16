@@ -21,10 +21,10 @@ const handleFileBtn = () => {
         })
             .then(response => {
                 console.log(response)
-                if (response.status === 200) {
-                    console.log("Ok")
-                    swal("File added!", "", "success");
-                }
+                return response.json()
+            })
+            .then(data => {
+                swal("File added!", `Save this id: ${data.id}`, "success");
             })
     })
 }

@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 
+
 {% block scripts %}
-    <script src="static/js/index.js?v=18"></script>
+    <script src="static/js/get_file.js?v=5"></script>
 {% endblock %}
 
 {% block content %}
 <div class="main-container">
     <div class="baseContainer">
         <div class="header">
-            Add file
+            Get file
         </div>
         <form>
             <div class="formGroup">
                 <input
-                        id="file_submit_input"
-                        type="file"
+                        id="file_get_input"
+                        type="text"
                         autoComplete="off"
                 />
             </div>
 
             <div>
-                <button id="file_submit_btn" type="button" class="btn">
-                    Submit
+                <button id="file_get_btn" type="button" class="btn">
+                    Get
                 </button>
             </div>
         </form>

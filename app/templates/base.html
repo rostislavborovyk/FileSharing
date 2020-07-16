@@ -15,7 +15,10 @@
     <link rel="stylesheet" type="text/css" href="static/css/index.css?v=5">
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="static/js/index.js?v=17"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
 </head>
 <body>
 {% include "header.html" %}
