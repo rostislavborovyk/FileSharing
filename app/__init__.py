@@ -1,4 +1,13 @@
 from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+import pymysql
+from dotenv import load_dotenv
+
+from app.config import BaseConfig
+
+pymysql.install_as_MySQLdb()
+load_dotenv()
 
 
 def register_blueprints(flask_app: Flask) -> None:
@@ -9,7 +18,11 @@ def register_blueprints(flask_app: Flask) -> None:
     flask_app.register_blueprint(base_bp)
 
 
-def create_app() -> Flask:
-    app = Flask(__name__)
-    register_blueprints(app)
-    return app
+app = Flask(__name__)
+app.config.from_object(BaseConfig)
+
+db = SQLAlchemy(app)
+register_blueprints(app)
+migrate = Migrate(app, db)
+
+from app.database import models
