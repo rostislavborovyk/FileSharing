@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <div class="baseContainer">
+        <div class="header">
+            Add file
+        </div>
+        <form>
+            <div class="formGroup">
+                <input
+                        id="file_submit_input"
+                        type="file"
+
+                        placeholder="Passport number"
+                        autoComplete="off"
+                />
+            </div>
+
+            <div>
+                <button id="file_submit_btn" type="button" class="btn">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

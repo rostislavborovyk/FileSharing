@@ -1,11 +1,11 @@
 from flask import Blueprint
 
 bp = Blueprint(
-    'file_handler',
+    'base',
     __name__,
-    url_prefix='/files',
+    url_prefix='',
     template_folder='templates',
     static_folder='static'
 )
 
-from app.file_handler import routes
+from app.base import routes
