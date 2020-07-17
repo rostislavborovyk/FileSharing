@@ -11,3 +11,8 @@ def index():
 @bp.route("/get_file")
 def get_file():
     return render_template("get_file.html")
+
+
+@bp.route("/file_not_found")
+def file_not_found():
+    return render_template("errors/404.html")

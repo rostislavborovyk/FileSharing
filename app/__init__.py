@@ -19,10 +19,19 @@ def register_blueprints(flask_app: Flask) -> None:
 
 
 app = Flask(__name__)
+
 app.config.from_object(BaseConfig)
 
 db = SQLAlchemy(app)
 register_blueprints(app)
 migrate = Migrate(app, db)
 
+# importing bg_jobs at this point to avoid circular import error
+from app.bg_jobs import init_bg_tasks
+
+init_bg_tasks()
+
+# importing models to allow alembic migrations
 from app.database import models
+
+from app.errors import *
