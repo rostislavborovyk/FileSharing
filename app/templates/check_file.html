@@ -2,19 +2,19 @@
 
 
 {% block scripts %}
-<script src="static/js/get_file.js?v=7"></script>
+    <script src="static/js/check_file.js?v=10"></script>
 {% endblock %}
 
 {% block content %}
 <div class="main-container">
     <div class="baseContainer">
         <div class="header">
-            Get file
+            Check file
         </div>
         <form>
             <div class="formGroup">
                 <input
-                        id="file_get_input"
+                        id="file_check_input"
                         type="text"
                         autoComplete="off"
                         placeholder="file id"
@@ -22,11 +22,14 @@
             </div>
 
             <div>
-                <button id="file_get_btn" type="button" class="btn">
-                    Get file
+                <button id="file_check_btn" type="button" class="btn">
+                    Check file
                 </button>
             </div>
         </form>
+    </div>
+    <div id="file-data-container-top">
+        <p id="file-data-container"></p>
     </div>
 </div>
 

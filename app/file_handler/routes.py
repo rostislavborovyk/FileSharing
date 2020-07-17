@@ -1,9 +1,9 @@
 import os
 
-from flask import request, send_file, redirect, url_for, jsonify
+from flask import request, send_file, redirect, url_for, jsonify, abort
 from werkzeug.utils import secure_filename
 
-from app.database.queries import add_file, get_file
+from app.database.queries import add_file, get_file, check_expired_file
 from app.file_handler import bp
 import pickle
 from time import time
@@ -63,4 +63,19 @@ def download(id_):
 
 @bp.route("/download_redirect/<string:id_>", methods=["GET"])
 def download_redirect(id_):
+    if check_expired_file(id_):
+        return abort(404)
     return redirect(url_for("file_handler.download", id_=id_))
+
+
+@bp.route("/check_file/<string:id_>", methods=["GET"])
+def check_file(id_):
+    if check_expired_file(id_):
+        return abort(404)
+    file = get_file(id_)
+    time_left = int(file.expire_at) - time()
+
+    minutes = int(time_left) // 60
+    seconds = int(time_left) - minutes * 60
+
+    return jsonify({"file_name": file.filename, "time_left": {"minutes": minutes, "seconds": seconds}})

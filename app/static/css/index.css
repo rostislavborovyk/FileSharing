@@ -56,3 +56,16 @@
         opacity: 1;
     }
 }
+
+#file-data-container-top {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    background: rgb(200, 85, 230);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    left: 50%;
+
+}

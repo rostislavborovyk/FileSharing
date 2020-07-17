@@ -1,4 +1,8 @@
 from uuid import uuid4
+
+from sqlalchemy import and_
+from werkzeug.exceptions import abort
+
 from app import db
 from app.database.models import File
 from time import time
@@ -18,6 +22,11 @@ def get_file(id_) -> File:
 
 
 def delete_expired_files() -> None:
-    current_timestamp = time()
-    File.query.filter(File.expire_at < current_timestamp).delete(synchronize_session=False)
+    File.query.filter(File.expire_at < time()).delete(synchronize_session=False)
     db.session.commit()
+
+
+def check_expired_file(id_) -> bool:
+    is_deleted = bool(File.query.filter(and_(File.id == id_, File.expire_at < time())).delete(synchronize_session=False))
+    db.session.commit()
+    return is_deleted
