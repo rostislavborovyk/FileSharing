@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block scripts %}
-    <script src="static/js/index.js?v=18"></script>
+    <script src="static/js/index.js?v=32"></script>
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,15 @@
                         autoComplete="off"
                 />
             </div>
-
+            <div class="formGroup">
+                <input
+                        id="file_life_time"
+                        type="number"
+                        min="0"
+                        autoComplete="off"
+                        placeholder="File life time in minutes"
+                />
+            </div>
             <div>
                 <button id="file_submit_btn" type="button" class="btn">
                     Submit

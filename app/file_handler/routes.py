@@ -6,11 +6,16 @@ from werkzeug.utils import secure_filename
 from app.database.queries import add_file, get_file
 from app.file_handler import bp
 import pickle
+from time import time
 
 
 @bp.route("/upload", methods=["POST"])
 def upload():
     file = request.files["media"]
+
+    # converting minutes to seconds and adding current timestamp
+    expire_at = int(request.form["life_time"]) * 60 + time()
+
     if file:
         # saving file to temp storage
         filename = secure_filename(file.filename)
@@ -28,7 +33,7 @@ def upload():
         serialized = pickle.dumps(data)
 
         # add file blob to db
-        id_ = add_file(serialized, filename)
+        id_ = add_file(serialized, filename, expire_at)
         return jsonify({"id": id_})
     return "Ok"
 

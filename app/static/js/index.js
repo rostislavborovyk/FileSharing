@@ -5,10 +5,11 @@ const handleFileInputChange = () => {
         const file = this.files[0];
         formData = new FormData();
         formData.append('media', file);
-        formData.append('text', "filename");
-        console.log(formData)
-        console.log(file)
     })
+    $('#file_life_time').change(function (e) {
+        formData.append('life_time', e.target.value);
+    })
+
 }
 
 const handleFileBtn = () => {

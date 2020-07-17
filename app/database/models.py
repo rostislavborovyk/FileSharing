@@ -7,3 +7,4 @@ class File(db.Model):
     id = db.Column(db.String(32), primary_key=True)
     file = db.Column(db.BLOB)
     filename = db.Column(db.String(60))
+    expire_at = db.Column(db.Integer)

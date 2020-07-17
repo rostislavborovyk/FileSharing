@@ -3,9 +3,9 @@ from app import db
 from app.database.models import File
 
 
-def add_file(file, filename) -> str:
+def add_file(file, filename, expire_at) -> str:
     id_ = uuid4().hex
-    file = File(id=id_, file=file, filename=filename)
+    file = File(id=id_, file=file, filename=filename, expire_at=expire_at)
     db.session.add(file)
     db.session.commit()
     return id_
