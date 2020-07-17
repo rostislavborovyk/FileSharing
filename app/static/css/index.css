@@ -1,6 +1,3 @@
-.main-container {
-}
-
 .baseContainer{
     text-align: center;
     position: absolute;
@@ -46,3 +43,16 @@
     border-bottom: 1px solid #fff;
 }
 
+.main-container {
+    animation: fadeAppearance 0.4s linear;
+}
+
+
+@keyframes fadeAppearance {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
