@@ -18,10 +18,12 @@ const handleFileInputChange = () => {
 
 const handleFileBtn = () => {
     $('#file_submit_btn').click(function (e) {
-        if(!isFile) {
+        if (!isFile) {
             swal("Choose file!", "", "warning");
         } else if (file_life_time === "" || file_life_time === undefined) {
             swal("Set file lifetime!", "", "warning");
+        } else if (parseInt(file_life_time) <= 0) {
+            swal("Set a valid file lifetime!", "File lifetime should be a positive integer!", "warning");
         } else {
             console.log("clicked")
             let url = "/files/upload"
@@ -34,7 +36,9 @@ const handleFileBtn = () => {
                     return response.json()
                 })
                 .then(data => {
-                    swal("File added!", `Save this id: ${data.id}`, "success");
+                    let link = `https://stark-beach-21336.herokuapp.com/files/download_redirect/${data.id}`
+                    let str = `Download via pasting id: ${data.id}\nOr download via link: ${link}`
+                    swal("File added!", str, "success");
                 })
         }
     })
