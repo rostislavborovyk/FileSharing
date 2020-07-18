@@ -1,3 +1,9 @@
+"""
+This file inits app instance of Flask
+For simplicity and unnecessity to have different instances of app (due to absence of tests)
+app instance created directly without create_app() function
+"""
+
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy

@@ -20,4 +20,8 @@ def check_file():
 
 @bp.route("/error/404")
 def error_404():
+    """
+    This route redirects to 404 error page
+    Made for situations when calling abort(404) from route doesnt redirect to 404 error page
+    """
     return abort(404)

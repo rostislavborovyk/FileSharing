@@ -1,7 +1,6 @@
 from uuid import uuid4
 
 from sqlalchemy import and_
-from werkzeug.exceptions import abort
 
 from app import db
 from app.database.models import File

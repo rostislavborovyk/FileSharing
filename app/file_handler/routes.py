@@ -63,6 +63,12 @@ def download(id_):
 
 @bp.route("/download_redirect/<string:id_>", methods=["GET"])
 def download_redirect(id_):
+    """
+    Route called when user clicks get file btn
+    Firstly it checks whether file is expired, if so redirects to 404
+    :param id_: database id_ of file with which it will be retrieved from db
+    :return: redirect for downloading a file
+    """
     if check_expired_file(id_):
         return abort(404)
     return redirect(url_for("file_handler.download", id_=id_))
@@ -70,6 +76,13 @@ def download_redirect(id_):
 
 @bp.route("/check_file/<string:id_>", methods=["GET"])
 def check_file(id_):
+    """
+    Route called when user clicks check file btn
+    Firstly it checks whether file is expired, if so redirects to 404
+
+    :param id_: database id_ of file with which it will be retrieved from db
+    :return: file name and formatted minutes, seconds before expiration
+    """
     if check_expired_file(id_):
         return abort(404)
     file = get_file(id_)
