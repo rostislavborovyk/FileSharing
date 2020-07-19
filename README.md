@@ -1,6 +1,6 @@
 # FileSharing
 
-### Max file size that can be hosted is 64 kb
+### Max file size that can be hosted is 16 mb
 
 ## Database schema
 ![](img/file_sharing_db.png)
